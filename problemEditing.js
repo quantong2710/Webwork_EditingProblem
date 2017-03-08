@@ -30,8 +30,9 @@ function getParam(parameterName){
 // Restore the state from the JSON file into the form (This method is called automatically when the page loads)
 function restoreState(){
 	// Get the JSON file
-	var myFileURL = "/webwork2/courses/" + getParam("author") + "/set" + getParam("hmwkSet") + "/" + getParam("fileName") + ".json";
-	alert("Restore JSON file from: " + myFileURL);
+	var myFileURL = getParam("author") + "/set" + getParam("hmwkSet") + "/" + getParam("fileName") + ".json";//"/webwork2/courses/" + getParam("author") + "/set" + getParam("hmwkSet") + "/" + getParam("fileName") + ".json";
+	if(getParam("author") != "" && getParam("hmwkSet") != "" && getParam("fileName") != "")
+		alert("Restore JSON file from: " + myFileURL);
 	// Parse the JSON file into a JSON object
 	$.getJSON(myFileURL, function(JSONObject){
 		// Replace the fields in the form with the ones in the JSON object
@@ -41,7 +42,7 @@ function restoreState(){
 			var formElementValue = JSONObject[elementId];
 			// Restore the value of the test input in HTML form
 			if(formElementType == "text"){
-				formElement.val(formElementValue)
+				formElement.val(formElementValue);
 			}
 			// Restore the value of the radio button in HTML form
 			else if(formElementType == "radio"){
@@ -62,7 +63,7 @@ function restoreState(){
 // Initiate the saving of the state by collecting all of the information and sending it to the perl file to save the state (Currently supports saving values for input-text, input-radio, and input-checkbox elements with the class "DuqWorkSave")
 function saveState(){
 	// The perl file location used for saving state
-	var perlFile = "/webwork2/saveState.pl";
+	var perlFile = "saveState.cgi";//"/webwork2/saveState.pl";
 	// The username of the author (Required for the location of the directory to place the file in)
 	var JSONAuthor = getParam("author");
 	// The homework set name (Required for the location of the directory to place the file in)
