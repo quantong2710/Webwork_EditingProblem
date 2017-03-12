@@ -71,7 +71,7 @@ function saveState(){
 	// The file name of the problem
 	var JSONFileName = getParam("fileName");
 	// The parameters in the query string
-	var postParameters = {directory: JSONAuthor + "/" + JSONHomeworkSet, fileName: JSONFileName};
+	var postParameters = {directory: JSONAuthor + "/set" + JSONHomeworkSet, fileName: JSONFileName};
 	// Attach each form value to the post parameters
 	var formElements = $("#form").find(".DuqWorkSave");
 	for(var i = 0; i < formElements.length; i++){
