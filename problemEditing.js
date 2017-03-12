@@ -46,12 +46,12 @@ function restoreState(){
 			}
 			// Restore the value of the radio button in HTML form
 			else if(formElementType == "radio"){
-				if(formElementValue)
+				if(formElementValue == "true")
 					formElement.prop("checked", true);
 			}
 			// Restore the value of the checkbos in HTML form
 			else if(formElementType == "checkbox"){
-				if(formElementValue)
+				if(formElementValue == "true")
 					formElement.prop("checked", true);
 				else
 					formElement.prop("checked", false);
